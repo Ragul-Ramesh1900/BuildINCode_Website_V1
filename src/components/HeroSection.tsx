@@ -1,7 +1,27 @@
 import { motion } from "framer-motion";
 import { ArrowRight, MessageCircle } from "lucide-react";
+import { useQuery } from "@tanstack/react-query";
+import { api } from "@/services/api";
 
-const HeroSection = () => (
+const HeroSection = () => {
+  const { data: hero } = useQuery({
+    queryKey: ['hero'],
+    queryFn: api.getHero,
+    initialData: {
+      badge: "Full-Service IT Agency — 6 Experts, Infinite Possibilities",
+      title: "Building Scalable Digital Solutions for",
+      highlightedText: "Modern Businesses",
+      description: "We deliver full-cycle IT services — from design & development to testing, deployment, and growth marketing. Your dedicated technology partner.",
+      stats: [
+        { number: "50+", label: "Projects Delivered" },
+        { number: "6", label: "Team Members" },
+        { number: "98%", label: "Client Satisfaction" },
+        { number: "24/7", label: "Support" },
+      ]
+    }
+  });
+
+  return (
   <section className="relative min-h-screen flex items-center justify-center section-padding pt-32 overflow-hidden">
     {/* Gradient overlay */}
     <div className="absolute inset-0 bg-gradient-hero" />
@@ -14,7 +34,7 @@ const HeroSection = () => (
         transition={{ duration: 0.8 }}
       >
         <span className="inline-block px-4 py-1.5 rounded-full border border-primary/30 text-primary text-sm font-medium mb-6">
-          Full-Service IT Agency — 6 Experts, Infinite Possibilities
+          {hero.badge}
         </span>
       </motion.div>
 
@@ -24,8 +44,8 @@ const HeroSection = () => (
         transition={{ duration: 0.8, delay: 0.15 }}
         className="text-4xl md:text-6xl lg:text-7xl font-bold leading-tight mb-6"
       >
-        Building Scalable Digital Solutions for{" "}
-        <span className="text-gradient">Modern Businesses</span>
+        {hero.title}{" "}
+        <span className="text-gradient">{hero.highlightedText}</span>
       </motion.h1>
 
       <motion.p
@@ -34,7 +54,7 @@ const HeroSection = () => (
         transition={{ duration: 0.8, delay: 0.3 }}
         className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto mb-10"
       >
-        We deliver full-cycle IT services — from design & development to testing, deployment, and growth marketing. Your dedicated technology partner.
+        {hero.description}
       </motion.p>
 
       <motion.div
@@ -58,20 +78,16 @@ const HeroSection = () => (
         transition={{ duration: 1, delay: 0.7 }}
         className="mt-16 grid grid-cols-2 md:grid-cols-4 gap-8"
       >
-        {[
-          { num: "50+", label: "Projects Delivered" },
-          { num: "6", label: "Team Members" },
-          { num: "98%", label: "Client Satisfaction" },
-          { num: "24/7", label: "Support" },
-        ].map((s) => (
+        {hero.stats?.map((s: any) => (
           <div key={s.label}>
-            <div className="text-3xl font-bold text-gradient">{s.num}</div>
+            <div className="text-3xl font-bold text-gradient">{s.number}</div>
             <div className="text-sm text-muted-foreground mt-1">{s.label}</div>
           </div>
         ))}
       </motion.div>
     </div>
   </section>
-);
+  );
+};
 
 export default HeroSection;
