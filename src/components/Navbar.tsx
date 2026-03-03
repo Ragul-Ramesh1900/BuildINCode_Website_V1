@@ -4,12 +4,11 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Link, useLocation } from "react-router-dom";
 
 const navLinks = [
-  { label: "Home", href: "/" },
-  { label: "About", href: "/about" },
+  { label: "Products", href: "/products" },
   { label: "Services", href: "/services" },
-  { label: "Portfolio", href: "/portfolio" },
-  { label: "Testimonials", href: "/testimonials" },
-  { label: "Contact", href: "/contact" },
+  { label: "Our Works", href: "/portfolio" },
+  { label: "About Us", href: "/about" },
+  { label: "Blogs", href: "/testimonials" },
 ];
 
 const Navbar = () => {
