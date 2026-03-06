@@ -1,5 +1,6 @@
 import Navbar from "@/components/Navbar";
-import ServicesSection from "@/components/ServicesSection";
+import DetailedServices from "@/components/DetailedServices";
+import WhyChooseUsSection from "@/components/WhyChooseUsSection";
 import Footer from "@/components/Footer";
 
 const Services = () => {
@@ -7,7 +8,8 @@ const Services = () => {
     <div className="min-h-screen bg-background">
       <Navbar />
       <div className="pt-20">
-        <ServicesSection />
+        <DetailedServices />
+        <WhyChooseUsSection />
       </div>
       <Footer />
     </div>
