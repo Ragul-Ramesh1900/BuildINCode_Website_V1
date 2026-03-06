@@ -1,33 +1,45 @@
 import { useState } from "react";
 import { Menu, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
+import { Link, useLocation } from "react-router-dom";
 
 const navLinks = [
-  { label: "About", href: "#about" },
-  { label: "Services", href: "#services" },
-  { label: "Portfolio", href: "#portfolio" },
-  { label: "Tech Stack", href: "#tech" },
-  { label: "Contact", href: "#contact" },
+  { label: "Products", href: "/products" },
+  { label: "Services", href: "/services" },
+  { label: "Our Works", href: "/portfolio" },
+  { label: "About Us", href: "/about" },
+  { label: "Blogs", href: "/testimonials" },
 ];
 
 const Navbar = () => {
   const [open, setOpen] = useState(false);
+  const location = useLocation();
+
+  const isActive = (href: string) => location.pathname === href;
 
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 glass">
       <div className="container mx-auto flex items-center justify-between h-16 px-4">
-        <a href="#" className="text-xl font-bold text-gradient">DevForge</a>
+        <Link to="/" className="text-xl font-bold text-gradient">DevForge</Link>
         
         {/* Desktop */}
         <div className="hidden md:flex items-center gap-8">
           {navLinks.map((l) => (
-            <a key={l.href} href={l.href} className="text-sm text-muted-foreground hover:text-foreground transition-colors">
+            <Link 
+              key={l.href} 
+              to={l.href} 
+              className={`text-sm transition-colors ${
+                isActive(l.href) 
+                  ? 'text-primary font-semibold' 
+                  : 'text-muted-foreground hover:text-foreground'
+              }`}
+            >
               {l.label}
-            </a>
+            </Link>
           ))}
-          <a href="#contact" className="px-5 py-2 rounded-lg bg-gradient-primary text-primary-foreground text-sm font-medium hover:opacity-90 transition-opacity">
+          <Link to="/contact" className="px-5 py-2 rounded-lg bg-gradient-primary text-primary-foreground text-sm font-medium hover:opacity-90 transition-opacity">
             Get Started
-          </a>
+          </Link>
         </div>
 
         {/* Mobile toggle */}
@@ -46,13 +58,22 @@ const Navbar = () => {
           >
             <div className="flex flex-col gap-4 p-6">
               {navLinks.map((l) => (
-                <a key={l.href} href={l.href} onClick={() => setOpen(false)} className="text-muted-foreground hover:text-foreground transition-colors">
+                <Link 
+                  key={l.href} 
+                  to={l.href} 
+                  onClick={() => setOpen(false)} 
+                  className={`transition-colors ${
+                    isActive(l.href)
+                      ? 'text-primary font-semibold'
+                      : 'text-muted-foreground hover:text-foreground'
+                  }`}
+                >
                   {l.label}
-                </a>
+                </Link>
               ))}
-              <a href="#contact" onClick={() => setOpen(false)} className="px-5 py-2 rounded-lg bg-gradient-primary text-primary-foreground text-sm font-medium text-center">
+              <Link to="/contact" onClick={() => setOpen(false)} className="px-5 py-2 rounded-lg bg-gradient-primary text-primary-foreground text-sm font-medium text-center">
                 Get Started
-              </a>
+              </Link>
             </div>
           </motion.div>
         )}

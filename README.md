@@ -1,73 +1,78 @@
-# Welcome to your Lovable project
+# Dynamic Portfolio Website
 
-## Project info
+A full-stack portfolio website with React frontend, Node.js backend, MongoDB database, and admin panel.
 
-**URL**: https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID
+## 🚀 Quick Start
 
-## How can I edit this code?
+### Prerequisites
+- Node.js (v18+)
+- MongoDB (local or Atlas)
 
-There are several ways of editing your application.
+### Installation
 
-**Use Lovable**
+1. **Clone and install dependencies**
+```bash
+npm install
+cd server && npm install && cd ..
+```
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and start prompting.
+2. **Setup environment variables**
+```bash
+# Already created: .env and server/.env
+# Update MongoDB URI in server/.env if needed
+```
 
-Changes made via Lovable will be committed automatically to this repo.
+3. **Start MongoDB** (if using local)
+```bash
+mongod
+```
 
-**Use your preferred IDE**
+4. **Seed the database**
+```bash
+cd server
+npm run seed
+cd ..
+```
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+5. **Start both servers**
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
-
-Follow these steps:
-
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
-
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
-
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
+Terminal 1 - Backend:
+```bash
+cd server
 npm run dev
 ```
 
-**Edit a file directly in GitHub**
+Terminal 2 - Frontend:
+```bash
+npm run dev
+```
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+6. **Access the application**
+- Website: http://localhost:5173
+- Admin Panel: http://localhost:5173/admin
+- API: http://localhost:5000/api
 
-**Use GitHub Codespaces**
+## 📚 Full Documentation
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+See [SETUP.md](./SETUP.md) for detailed setup instructions, API documentation, and deployment guide.
 
-## What technologies are used for this project?
+## ✨ Features
 
-This project is built with:
+- ✅ Dynamic content management
+- ✅ Admin dashboard
+- ✅ Contact form with database storage
+- ✅ Project portfolio management
+- ✅ Service categories
+- ✅ Testimonials system
+- ✅ Responsive design
+- ✅ REST API
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+## 🛠️ Tech Stack
 
-## How can I deploy this project?
+**Frontend:** React, TypeScript, Vite, TanStack Query, Tailwind CSS, Framer Motion  
+**Backend:** Node.js, Express, MongoDB, Mongoose  
+**UI Components:** shadcn/ui
 
-Simply open [Lovable](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and click on Share -> Publish.
+## 📝 License
 
-## Can I connect a custom domain to my Lovable project?
-
-Yes, you can!
-
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
-
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
+MIT

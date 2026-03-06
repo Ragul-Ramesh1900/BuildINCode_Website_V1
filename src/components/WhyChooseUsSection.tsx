@@ -1,13 +1,14 @@
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
-import { Users, RefreshCw, MessageSquare, DollarSign, HeartHandshake } from "lucide-react";
+import { Users, RefreshCw, MessageSquare, ShieldCheck, Zap, HeartHandshake } from "lucide-react";
 
 const reasons = [
-  { icon: Users, title: "Dedicated Team Structure", desc: "A focused team assigned exclusively to your project for maximum accountability." },
-  { icon: RefreshCw, title: "Agile Development Process", desc: "Iterative sprints, continuous delivery, and flexibility to adapt to changing requirements." },
-  { icon: MessageSquare, title: "Transparent Communication", desc: "Daily standups, weekly reports, and real-time project tracking via shared dashboards." },
-  { icon: DollarSign, title: "Affordable Pricing", desc: "Enterprise-quality output at startup-friendly rates. No hidden fees, ever." },
-  { icon: HeartHandshake, title: "Long-term Support", desc: "We don't disappear after launch. Ongoing maintenance, updates, and scaling support." },
+  { icon: Users, title: "Experienced developers and engineers", desc: "Expert team with deep industry knowledge and technical proficiency." },
+  { icon: RefreshCw, title: "Modern technology stack", desc: "We use the latest battle-tested technologies to build cutting-edge solutions." },
+  { icon: ShieldCheck, title: "Scalable and secure solutions", desc: "Architecture designed to grow with your business while maintaining top-tier security." },
+  { icon: Zap, title: "Agile development process", desc: "Fast, iterative development that ensures your project stays on track and adapts to feedback." },
+  { icon: MessageSquare, title: "Transparent communication", desc: "Open channels and regular updates to keep you informed every step of the way." },
+  { icon: HeartHandshake, title: "Reliable support and maintenance", desc: "Ongoing dedication to your project's health and performance after launch." },
 ];
 
 const WhyChooseUsSection = () => {

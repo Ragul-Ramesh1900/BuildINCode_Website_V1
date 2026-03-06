@@ -2,20 +2,32 @@ import { motion, useInView } from "framer-motion";
 import { useRef, useState } from "react";
 import { Send, Mail, MessageCircle } from "lucide-react";
 import { toast } from "sonner";
+import { useMutation } from "@tanstack/react-query";
+import { api } from "@/services/api";
 
 const ContactSection = () => {
   const ref = useRef(null);
   const inView = useInView(ref, { once: true, margin: "-100px" });
-  const [form, setForm] = useState({ name: "", email: "", message: "" });
+  const [form, setForm] = useState({ name: "", email: "", message: "", phone: "", company: "" });
+
+  const mutation = useMutation({
+    mutationFn: api.submitContact,
+    onSuccess: () => {
+      toast.success("Message sent! We'll get back to you within 24 hours.");
+      setForm({ name: "", email: "", message: "", phone: "", company: "" });
+    },
+    onError: () => {
+      toast.error("Failed to send message. Please try again.");
+    }
+  });
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (!form.name.trim() || !form.email.trim() || !form.message.trim()) {
-      toast.error("Please fill in all fields");
+      toast.error("Please fill in all required fields");
       return;
     }
-    toast.success("Message sent! We'll get back to you within 24 hours.");
-    setForm({ name: "", email: "", message: "" });
+    mutation.mutate(form);
   };
 
   return (
@@ -80,9 +92,10 @@ const ContactSection = () => {
             </div>
             <button
               type="submit"
-              className="w-full inline-flex items-center justify-center gap-2 px-8 py-3.5 rounded-lg bg-gradient-primary text-primary-foreground font-semibold hover:opacity-90 transition-opacity shadow-glow"
+              disabled={mutation.isPending}
+              className="w-full inline-flex items-center justify-center gap-2 px-8 py-3.5 rounded-lg bg-gradient-primary text-primary-foreground font-semibold hover:opacity-90 transition-opacity shadow-glow disabled:opacity-50"
             >
-              Send Message <Send size={18} />
+              {mutation.isPending ? "Sending..." : "Send Message"} <Send size={18} />
             </button>
           </motion.form>
 
