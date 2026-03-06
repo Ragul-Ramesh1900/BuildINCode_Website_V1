@@ -53,6 +53,11 @@ const Admin = () => {
             <TabsTrigger value="projects">Projects</TabsTrigger>
             <TabsTrigger value="contacts">Contacts</TabsTrigger>
             <TabsTrigger value="hero">Hero Section</TabsTrigger>
+            <TabsTrigger value="blogs" asChild>
+              <a href="/admin/blog" className="flex items-center gap-1.5 cursor-pointer">
+                Blog Portal <span className="text-[10px] bg-primary text-primary-foreground px-1 rounded">New</span>
+              </a>
+            </TabsTrigger>
           </TabsList>
 
           <TabsContent value="projects" className="space-y-6">
