@@ -1,7 +1,9 @@
 import Navbar from "@/components/Navbar";
 import AboutSection from "@/components/AboutSection";
+import DevelopmentProcess from "@/components/DevelopmentProcess";
+import TeamSection from "@/components/TeamSection";
+import CoreValuesSection from "@/components/CoreValuesSection";
 import WhyChooseUsSection from "@/components/WhyChooseUsSection";
-import TechStackSection from "@/components/TechStackSection";
 import Footer from "@/components/Footer";
 
 const About = () => {
@@ -9,8 +11,10 @@ const About = () => {
     <div className="min-h-screen bg-background">
       <Navbar />
       <AboutSection />
+      <DevelopmentProcess />
+      <TeamSection />
+      <CoreValuesSection />
       <WhyChooseUsSection />
-      <TechStackSection />
       <Footer />
     </div>
   );
