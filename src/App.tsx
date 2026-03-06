@@ -37,34 +37,34 @@ const App = () => (
           <Route path="/contact" element={<Contact />} />
           <Route path="/admin" element={<Admin />} />
           <Route 
-            path="/admin/blog" 
+            path="/blog/admin" 
             element={<ProtectedRoute><BlogDashboard /></ProtectedRoute>} 
           />
           <Route 
-            path="/admin/blog/posts" 
+            path="/blog/admin/posts" 
             element={<ProtectedRoute><BlogList /></ProtectedRoute>} 
           />
           <Route 
-            path="/admin/blog/editor" 
+            path="/blog/admin/editor" 
             element={<ProtectedRoute><BlogEditor /></ProtectedRoute>} 
           />
           <Route 
-            path="/admin/blog/editor/:id" 
+            path="/blog/admin/editor/:id" 
             element={<ProtectedRoute><BlogEditor /></ProtectedRoute>} 
           />
           <Route 
-            path="/admin/blog/categories" 
+            path="/blog/admin/categories" 
             element={<ProtectedRoute><CategoriesTags /></ProtectedRoute>} 
           />
           <Route 
-            path="/admin/blog/media" 
+            path="/blog/admin/media" 
             element={<ProtectedRoute><MediaLibrary /></ProtectedRoute>} 
           />
           <Route 
-            path="/admin/blog/settings" 
+            path="/blog/admin/settings" 
             element={<ProtectedRoute><BlogSettings /></ProtectedRoute>} 
           />
-          <Route path="/admin/blog/login" element={<BlogLogin />} />
+          <Route path="/blog/admin/login" element={<BlogLogin />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>

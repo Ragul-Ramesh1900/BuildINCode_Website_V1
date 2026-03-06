@@ -40,7 +40,7 @@ const Dashboard = () => {
           <p className="text-muted-foreground">Here's what's happening with your blog today.</p>
         </div>
         <Button asChild className="shadow-glow">
-          <Link to="/admin/blog/editor" className="flex items-center gap-2">
+          <Link to="/blog/admin/editor" className="flex items-center gap-2">
             <Plus size={18} /> New Post
           </Link>
         </Button>
@@ -75,8 +75,8 @@ const Dashboard = () => {
               <CardTitle>Recent Posts</CardTitle>
               <p className="text-sm text-muted-foreground">Your most recently updated blog posts.</p>
             </div>
-            <Button variant="outline" size="sm" asChild>
-              <Link to="/admin/blog/posts">View All</Link>
+            <Button variant="ghost" size="sm" asChild className="text-primary hover:text-primary hover:bg-primary/5">
+              <Link to="/blog/admin/posts">View All</Link>
             </Button>
           </CardHeader>
           <CardContent>

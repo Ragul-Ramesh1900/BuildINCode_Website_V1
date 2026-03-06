@@ -11,7 +11,7 @@ const ProtectedRoute = ({ children }: ProtectedRouteProps) => {
 
   useEffect(() => {
     if (!authService.isAuthenticated()) {
-      navigate("/admin/blog/login");
+      navigate("/blog/admin/login");
     }
   }, [navigate]);
 

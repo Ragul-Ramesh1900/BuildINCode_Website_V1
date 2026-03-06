@@ -36,7 +36,7 @@ const Login = () => {
       if (formData.email === "admin@devforge.com" && formData.password === "admin123") {
         authService.login("mock-jwt-token-xyz-123");
         toast.success("Welcome back, Master!");
-        navigate("/admin/blog");
+        navigate("/blog/admin");
       } else {
         toast.error("Invalid credentials. Please try again.");
       }

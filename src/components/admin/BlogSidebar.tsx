@@ -14,12 +14,12 @@ import { Button } from "@/components/ui/button";
 import { authService } from "@/services/auth";
 
 const menuItems = [
-  { icon: LayoutDashboard, label: "Dashboard", path: "/admin/blog" },
-  { icon: FileText, label: "All Posts", path: "/admin/blog/posts" },
-  { icon: Layers, label: "Categories", path: "/admin/blog/categories" },
-  { icon: Tag, label: "Tags", path: "/admin/blog/categories" }, // Redirects to combined page
-  { icon: ImageIcon, label: "Media", path: "/admin/blog/media" },
-  { icon: Settings, label: "Settings", path: "/admin/blog/settings" },
+  { icon: LayoutDashboard, label: "Dashboard", path: "/blog/admin" },
+  { icon: FileText, label: "All Posts", path: "/blog/admin/posts" },
+  { icon: Layers, label: "Categories", path: "/blog/admin/categories" },
+  { icon: Tag, label: "Tags", path: "/blog/admin/categories" }, // Redirects to combined page
+  { icon: ImageIcon, label: "Media", path: "/blog/admin/media" },
+  { icon: Settings, label: "Settings", path: "/blog/admin/settings" },
 ];
 
 const BlogSidebar = () => {
@@ -78,7 +78,7 @@ const BlogSidebar = () => {
             onClick={() => {
                if(confirm("Sign out of admin session?")) {
                   authService.logout();
-                  window.location.href = "/admin/blog/login";
+                  window.location.href = "/blog/admin/login";
                }
             }}
           >

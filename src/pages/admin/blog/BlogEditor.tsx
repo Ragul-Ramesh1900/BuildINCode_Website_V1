@@ -103,7 +103,7 @@ const BlogEditor = () => {
       <form onSubmit={handleSubmit}>
         <div className="flex justify-between items-center mb-8">
           <Button variant="ghost" asChild>
-            <Link to="/admin/blog/posts" className="flex items-center gap-2">
+            <Link to="/blog/admin/posts" className="flex items-center gap-2">
               <ArrowLeft size={18} /> Back to Posts
             </Link>
           </Button>

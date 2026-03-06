@@ -75,7 +75,7 @@ const BlogList = () => {
             <option value="draft">Draft</option>
           </select>
           <Button asChild className="shadow-glow">
-            <Link to="/admin/blog/editor" className="flex items-center gap-2">
+            <Link to="/blog/admin/editor" className="flex items-center gap-2">
               <Plus size={18} /> Add New
             </Link>
           </Button>
@@ -135,7 +135,7 @@ const BlogList = () => {
                   <TableCell className="text-right">
                     <div className="flex justify-end gap-2">
                       <Button variant="ghost" size="icon" asChild title="Edit">
-                        <Link to={`/admin/blog/editor/${blog._id}`} className="text-muted-foreground hover:text-primary">
+                        <Link to={`/blog/admin/editor/${blog._id}`} className="text-muted-foreground hover:text-primary">
                           <Edit size={16} />
                         </Link>
                       </Button>
