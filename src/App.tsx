@@ -16,6 +16,8 @@ import BlogEditor from "./pages/admin/blog/BlogEditor";
 import CategoriesTags from "./pages/admin/blog/CategoriesTags";
 import MediaLibrary from "./pages/admin/blog/MediaLibrary";
 import BlogSettings from "./pages/admin/blog/Settings";
+import BlogLogin from "./pages/admin/blog/Login";
+import ProtectedRoute from "./components/admin/ProtectedRoute";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -34,13 +36,35 @@ const App = () => (
           <Route path="/testimonials" element={<Testimonials />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/admin" element={<Admin />} />
-          <Route path="/admin/blog" element={<BlogDashboard />} />
-          <Route path="/admin/blog/posts" element={<BlogList />} />
-          <Route path="/admin/blog/editor" element={<BlogEditor />} />
-          <Route path="/admin/blog/editor/:id" element={<BlogEditor />} />
-          <Route path="/admin/blog/categories" element={<CategoriesTags />} />
-          <Route path="/admin/blog/media" element={<MediaLibrary />} />
-          <Route path="/admin/blog/settings" element={<BlogSettings />} />
+          <Route 
+            path="/admin/blog" 
+            element={<ProtectedRoute><BlogDashboard /></ProtectedRoute>} 
+          />
+          <Route 
+            path="/admin/blog/posts" 
+            element={<ProtectedRoute><BlogList /></ProtectedRoute>} 
+          />
+          <Route 
+            path="/admin/blog/editor" 
+            element={<ProtectedRoute><BlogEditor /></ProtectedRoute>} 
+          />
+          <Route 
+            path="/admin/blog/editor/:id" 
+            element={<ProtectedRoute><BlogEditor /></ProtectedRoute>} 
+          />
+          <Route 
+            path="/admin/blog/categories" 
+            element={<ProtectedRoute><CategoriesTags /></ProtectedRoute>} 
+          />
+          <Route 
+            path="/admin/blog/media" 
+            element={<ProtectedRoute><MediaLibrary /></ProtectedRoute>} 
+          />
+          <Route 
+            path="/admin/blog/settings" 
+            element={<ProtectedRoute><BlogSettings /></ProtectedRoute>} 
+          />
+          <Route path="/admin/blog/login" element={<BlogLogin />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>

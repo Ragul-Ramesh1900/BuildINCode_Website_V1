@@ -169,6 +169,20 @@ export const api = {
     return res.json();
   },
 
+  // Auth
+  login: async (credentials: any) => {
+    const res = await fetch(`${API_BASE_URL}/auth/login`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(credentials),
+    });
+    return res.json();
+  },
+  logout: async () => {
+    // Standard logout logic (clear tokens etc)
+    return { success: true };
+  },
+
   // Stats
   getBlogStats: async () => {
     const res = await fetch(`${API_BASE_URL}/blogs/stats`);

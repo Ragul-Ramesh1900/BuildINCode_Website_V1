@@ -6,15 +6,18 @@ import {
   Tag, 
   Image as ImageIcon, 
   Settings,
-  ChevronRight
+  ChevronRight,
+  LogOut
 } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { Button } from "@/components/ui/button";
+import { authService } from "@/services/auth";
 
 const menuItems = [
   { icon: LayoutDashboard, label: "Dashboard", path: "/admin/blog" },
   { icon: FileText, label: "All Posts", path: "/admin/blog/posts" },
   { icon: Layers, label: "Categories", path: "/admin/blog/categories" },
-  { icon: Tag, label: "Tags", path: "/admin/blog/tags" },
+  { icon: Tag, label: "Tags", path: "/admin/blog/categories" }, // Redirects to combined page
   { icon: ImageIcon, label: "Media", path: "/admin/blog/media" },
   { icon: Settings, label: "Settings", path: "/admin/blog/settings" },
 ];
@@ -23,7 +26,7 @@ const BlogSidebar = () => {
   const location = useLocation();
 
   return (
-    <div className="w-64 bg-card border-r border-border flex flex-col h-screen sticky top-0">
+    <aside className="w-64 bg-card border-r border-border flex flex-col h-screen sticky top-0">
       <div className="p-6">
         <Link to="/" className="flex items-center gap-2 group">
           <div className="w-8 h-8 rounded-lg bg-primary flex items-center justify-center text-primary-foreground font-bold shadow-glow">
@@ -57,8 +60,8 @@ const BlogSidebar = () => {
         ))}
       </nav>
 
-      <div className="p-4 border-t border-border">
-        <div className="flex items-center gap-3 p-2 rounded-lg bg-secondary/50">
+      <div className="p-4 border-t border-border relative">
+        <div className="flex items-center gap-3 p-2 rounded-lg bg-secondary/50 mb-12">
           <div className="w-8 h-8 rounded-full bg-primary/20 flex items-center justify-center text-primary font-bold text-xs">
             AD
           </div>
@@ -67,8 +70,24 @@ const BlogSidebar = () => {
             <p className="text-xs text-muted-foreground truncate">Administrator</p>
           </div>
         </div>
+        
+        <div className="absolute bottom-4 left-0 w-full px-4">
+          <Button 
+            variant="ghost" 
+            className="w-full justify-start text-destructive hover:bg-destructive/10 hover:text-destructive group"
+            onClick={() => {
+               if(confirm("Sign out of admin session?")) {
+                  authService.logout();
+                  window.location.href = "/admin/blog/login";
+               }
+            }}
+          >
+            <LogOut className="mr-3 group-hover:rotate-12 transition-transform" size={18} />
+            Logout
+          </Button>
+        </div>
       </div>
-    </div>
+    </aside>
   );
 };
 
