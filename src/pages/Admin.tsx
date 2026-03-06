@@ -7,6 +7,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
+import { DateFilter } from "@/components/DateFilter";
 
 const Admin = () => {
   const queryClient = useQueryClient();
@@ -121,8 +122,19 @@ const Admin = () => {
             </div>
           </TabsContent>
 
-          <TabsContent value="contacts" className="space-y-4">
-            {contacts.map((contact: any) => (
+          <TabsContent value="contacts" className="space-y-6">
+            <div className="flex flex-col md:flex-row justify-between items-start gap-8 mb-4">
+              <div>
+                <h2 className="text-2xl font-semibold mb-1">Contact Inquiries</h2>
+                <p className="text-sm text-muted-foreground">Manage and filter your incoming leads.</p>
+              </div>
+              <div className="scale-90 origin-top-right">
+                <DateFilter />
+              </div>
+            </div>
+            
+            <div className="grid gap-4">
+              {contacts.map((contact: any) => (
               <Card key={contact._id}>
                 <CardHeader>
                   <CardTitle className="flex justify-between items-center">
@@ -146,7 +158,8 @@ const Admin = () => {
                   </p>
                 </CardContent>
               </Card>
-            ))}
+              ))}
+            </div>
           </TabsContent>
 
           <TabsContent value="hero">
