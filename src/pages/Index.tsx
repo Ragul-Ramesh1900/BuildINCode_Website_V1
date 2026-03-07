@@ -2,8 +2,9 @@ import Navbar from "@/components/Navbar";
 import HeroSection from "@/components/HeroSection";
 import AboutSection from "@/components/AboutSection";
 import ServicesSection from "@/components/ServicesSection";
-import PortfolioSection from "@/components/PortfolioSection";
 import WhyChooseUsSection from "@/components/WhyChooseUsSection";
+import IndustriesSection from "@/components/IndustriesSection";
+import PortfolioSection from "@/components/PortfolioSection";
 import TechStackSection from "@/components/TechStackSection";
 import TestimonialsSection from "@/components/TestimonialsSection";
 import ContactSection from "@/components/ContactSection";
@@ -11,16 +12,19 @@ import Footer from "@/components/Footer";
 
 const Index = () => {
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-background text-foreground">
       <Navbar />
-      <HeroSection />
-      <AboutSection />
-      <ServicesSection />
-      <PortfolioSection />
-      <WhyChooseUsSection />
-      <TechStackSection />
-      <TestimonialsSection />
-      <ContactSection />
+      <main>
+        <HeroSection />
+        <AboutSection />
+        <ServicesSection />
+        <WhyChooseUsSection />
+        <IndustriesSection />
+        <PortfolioSection />
+        <TechStackSection />
+        <TestimonialsSection />
+        <ContactSection />
+      </main>
       <Footer />
     </div>
   );
