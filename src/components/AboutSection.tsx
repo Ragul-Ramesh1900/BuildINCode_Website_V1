@@ -20,16 +20,14 @@ const AboutSection = () => {
             className="flex-1 w-full"
           >
             <span className="text-primary text-sm font-semibold uppercase tracking-widest px-4 py-1 rounded-full bg-primary/10 border border-primary/20">About Us</span>
-            <h1 className="text-4xl md:text-6xl font-bold mt-6 mb-4">
-              A <span className="text-gradient font-bold">Full-Service</span> <br /> Software Development <span className="text-gradient font-bold underline decoration-primary/30">Agency</span>
-            </h1>
+            <h2 className="text-3xl md:text-5xl font-bold mt-6 mb-4">
+              Your <span className="text-gradient">End-to-End</span> Technology Partner
+            </h2>
             <p className="text-muted-foreground text-xl leading-relaxed mb-8 mt-6">
-              DevForge is a highly skilled team of experienced developers, designers, and technology specialists dedicated to delivering high-quality digital solutions. 
-              We combine enterprise-level engineering standards with the agility and speed of a startup to build scalable, secure, and high-performance products.
+              DevForge provides full-cycle software development services — from strategy and UI/UX design to development, deployment, and long-term maintenance.
             </p>
             <p className="text-muted-foreground text-lg leading-relaxed mb-8">
-              Our team focuses on quality, innovation, and transparent communication to ensure every project is delivered successfully. 
-              From concept to deployment and long-term support, we help businesses transform ideas into powerful digital products.
+              Our mission is simple: Build reliable, scalable, and high-performance digital solutions that help businesses succeed in the modern digital world.
             </p>
             
             <div className="grid grid-cols-2 gap-4 mt-10">

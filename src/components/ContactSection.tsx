@@ -39,13 +39,17 @@ const ContactSection = () => {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <span className="text-primary text-sm font-semibold uppercase tracking-widest">Contact</span>
+          <span className="text-primary text-sm font-semibold uppercase tracking-widest">CTA Section</span>
           <h2 className="text-3xl md:text-5xl font-bold mt-3 mb-4">
-            Start Your <span className="text-gradient">Project Today</span>
+            Transform Your Ideas Into <span className="text-gradient">Powerful Digital Products</span>
           </h2>
           <p className="text-muted-foreground max-w-2xl mx-auto text-lg">
-            Ready to build something great? Let's talk about your project.
+            Whether you need a startup MVP, enterprise platform, SaaS product, or mobile application, DevForge has the expertise to bring your vision to life. Our team works closely with clients to deliver high-quality software solutions that drive innovation and business growth.
           </p>
+          <div className="mt-8 mb-4">
+            <h3 className="text-2xl font-bold text-foreground">Start Your Digital Transformation Today</h3>
+            <p className="text-muted-foreground mt-2">Partner with DevForge to build scalable technology solutions for your business.</p>
+          </div>
         </motion.div>
 
         <div className="grid lg:grid-cols-2 gap-12">

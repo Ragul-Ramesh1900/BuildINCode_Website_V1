@@ -19,6 +19,21 @@ const ServicesSection = () => {
   const { data: categories = [] } = useQuery({
     queryKey: ['services'],
     queryFn: api.getServices,
+    initialData: [
+      {
+        category: "Our Core Expertise",
+        services: [
+          { name: "Custom Software Development", icon: "Layout", description: "Tailored software solutions built to solve your unique business challenges." },
+          { name: "Web Application Development", icon: "Globe", description: "High-performance web apps built with modern frameworks like React and Next.js." },
+          { name: "Mobile App Development", icon: "Smartphone", description: "Native and cross-platform mobile apps for iOS and Android." },
+          { name: "UI/UX Design", icon: "Palette", description: "Intuitive and engaging user interfaces designed for conversion and usability." },
+          { name: "Cloud & DevOps Solutions", icon: "Cloud", description: "Scalable cloud infrastructure and automated deployment pipelines." },
+          { name: "API Development & Integration", icon: "Plug", description: "Seamlessly connect your systems with robust and secure APIs." },
+          { name: "SaaS Platform Development", icon: "Gauge", description: "End-to-end development of subscription-based software products." },
+          { name: "Software Testing & Quality Assurance", icon: "ClipboardCheck", description: "Rigorous testing to ensure your software is bug-free and reliable." },
+        ]
+      }
+    ]
   });
 
   return (
@@ -32,7 +47,7 @@ const ServicesSection = () => {
         >
           <span className="text-primary text-sm font-semibold uppercase tracking-widest">Services</span>
           <h2 className="text-3xl md:text-5xl font-bold mt-3 mb-4">
-            End-to-End <span className="text-gradient">IT Solutions</span>
+            Our Core <span className="text-gradient">Expertise</span>
           </h2>
           <p className="text-muted-foreground max-w-2xl mx-auto text-lg">
             Everything you need to build, launch, and grow your digital product — under one roof.
