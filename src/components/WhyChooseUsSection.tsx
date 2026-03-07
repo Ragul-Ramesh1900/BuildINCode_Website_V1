@@ -1,14 +1,13 @@
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
-import { Users, RefreshCw, MessageSquare, ShieldCheck, Zap, HeartHandshake } from "lucide-react";
+import { Users, RefreshCw, MessageSquare, ShieldCheck, Zap, HeartHandshake, Palette } from "lucide-react";
 
 const reasons = [
-  { icon: Users, title: "Experienced developers and engineers", desc: "Expert team with deep industry knowledge and technical proficiency." },
-  { icon: RefreshCw, title: "Modern technology stack", desc: "We use the latest battle-tested technologies to build cutting-edge solutions." },
-  { icon: ShieldCheck, title: "Scalable and secure solutions", desc: "Architecture designed to grow with your business while maintaining top-tier security." },
-  { icon: Zap, title: "Agile development process", desc: "Fast, iterative development that ensures your project stays on track and adapts to feedback." },
-  { icon: MessageSquare, title: "Transparent communication", desc: "Open channels and regular updates to keep you informed every step of the way." },
-  { icon: HeartHandshake, title: "Reliable support and maintenance", desc: "Ongoing dedication to your project's health and performance after launch." },
+  { icon: ShieldCheck, title: "Scalable Architecture", desc: "We design systems that grow with your business using modern frameworks, cloud infrastructure, and microservices architecture." },
+  { icon: Zap, title: "High Performance", desc: "Our solutions are optimized for speed, security, and performance to ensure the best user experience." },
+  { icon: Palette, title: "Modern UI/UX Design", desc: "We create intuitive and engaging user interfaces that improve customer satisfaction and product usability." },
+  { icon: ShieldCheck, title: "Secure Development", desc: "Security is integrated into every stage of our development process." },
+  { icon: Users, title: "Dedicated Development Team", desc: "Work with a team of experienced developers, designers, and project managers focused on your success." },
 ];
 
 const WhyChooseUsSection = () => {
@@ -26,7 +25,7 @@ const WhyChooseUsSection = () => {
         >
           <span className="text-primary text-sm font-semibold uppercase tracking-widest">Why Us</span>
           <h2 className="text-3xl md:text-5xl font-bold mt-3 mb-4">
-            Why Clients <span className="text-gradient">Choose DevForge</span>
+            Why Businesses <span className="text-gradient">Choose DevForge</span>
           </h2>
         </motion.div>
 
