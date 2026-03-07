@@ -6,6 +6,7 @@ import ServicesSection from "@/components/ServicesSection";
 import WhyChooseUsSection from "@/components/WhyChooseUsSection";
 import IndustriesSection from "@/components/IndustriesSection";
 import PortfolioSection from "@/components/PortfolioSection";
+import TechStackSection from "@/components/TechStackSection";
 import TestimonialsSection from "@/components/TestimonialsSection";
 import ContactSection from "@/components/ContactSection";
 
@@ -20,6 +21,7 @@ const Home = () => {
         <WhyChooseUsSection />
         <IndustriesSection />
         <PortfolioSection />
+        <TechStackSection />
         <TestimonialsSection />
         <ContactSection />
       </main>
