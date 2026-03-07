@@ -17,6 +17,8 @@ import CategoriesTags from "./pages/admin/blog/CategoriesTags";
 import MediaLibrary from "./pages/admin/blog/MediaLibrary";
 import BlogSettings from "./pages/admin/blog/Settings";
 import BlogLogin from "./pages/admin/blog/Login";
+import Blog from "./pages/Blog";
+import BlogPost from "./pages/BlogPost";
 import ProtectedRoute from "./components/admin/ProtectedRoute";
 import NotFound from "./pages/NotFound";
 
@@ -35,6 +37,8 @@ const App = () => (
           <Route path="/portfolio" element={<Portfolio />} />
           <Route path="/testimonials" element={<Testimonials />} />
           <Route path="/contact" element={<Contact />} />
+          <Route path="/blog" element={<Blog />} />
+          <Route path="/blog/:slug" element={<BlogPost />} />
           <Route path="/admin" element={<Admin />} />
           <Route 
             path="/blog/admin" 

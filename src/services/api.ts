@@ -90,8 +90,12 @@ export const api = {
     const res = await fetch(`${API_BASE_URL}/blogs${query}`);
     return res.json();
   },
-  getBlog: async (slug: string) => {
-    const res = await fetch(`${API_BASE_URL}/blogs/${slug}`);
+  getBlog: async (id: string) => {
+    const res = await fetch(`${API_BASE_URL}/blogs/${id}`);
+    return res.json();
+  },
+  getBlogBySlug: async (slug: string) => {
+    const res = await fetch(`${API_BASE_URL}/blogs/slug/${slug}`);
     return res.json();
   },
   createBlog: async (data: any) => {
