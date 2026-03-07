@@ -69,7 +69,7 @@ const BlogEditor = () => {
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['blogs'] });
       toast.success(`Blog post ${isEditing ? 'updated' : 'created'} successfully`);
-      navigate("/admin/blog/posts");
+      navigate("/blog/admin/posts");
     },
     onError: () => {
       toast.error(`Failed to ${isEditing ? 'update' : 'create'} blog post`);
