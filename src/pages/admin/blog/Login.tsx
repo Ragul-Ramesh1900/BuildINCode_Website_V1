@@ -15,6 +15,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { toast } from "sonner";
 import { authService } from "@/services/auth";
+import { api } from "@/services/api";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -29,18 +30,16 @@ const Login = () => {
     e.preventDefault();
     setIsLoading(true);
     
-    // Simulate API call
-    setTimeout(() => {
+    try {
+      const result = await api.login(formData);
+      authService.login(result.token, result.user);
+      toast.success(`Welcome back, ${result.user?.name || 'Admin'}!`);
+      navigate("/blog/admin");
+    } catch (err: any) {
+      toast.error(err.message || "Invalid credentials. Please try again.");
+    } finally {
       setIsLoading(false);
-      // HARDCODED FOR DEMO - in production this would verify against an API
-      if (formData.email === "admin@buildincode.com" && formData.password === "admin123") {
-        authService.login("mock-jwt-token-xyz-123");
-        toast.success("Welcome back, Master!");
-        navigate("/blog/admin");
-      } else {
-        toast.error("Invalid credentials. Please try again.");
-      }
-    }, 1500);
+    }
   };
 
   return (

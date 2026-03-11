@@ -63,11 +63,11 @@ const BlogSidebar = () => {
       <div className="p-4 border-t border-border relative">
         <div className="flex items-center gap-3 p-2 rounded-lg bg-secondary/50 mb-12">
           <div className="w-8 h-8 rounded-full bg-primary/20 flex items-center justify-center text-primary font-bold text-xs">
-            AD
+            {authService.getUser()?.name?.charAt(0)?.toUpperCase() || 'A'}
           </div>
           <div className="flex-1 min-w-0">
-            <p className="text-sm font-medium text-foreground truncate">Admin User</p>
-            <p className="text-xs text-muted-foreground truncate">Administrator</p>
+            <p className="text-sm font-medium text-foreground truncate">{authService.getUser()?.name || 'Admin User'}</p>
+            <p className="text-xs text-muted-foreground truncate">{authService.getUser()?.email || 'Administrator'}</p>
           </div>
         </div>
         

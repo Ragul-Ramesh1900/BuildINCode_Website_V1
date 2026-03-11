@@ -47,6 +47,11 @@ const BlogEditor = () => {
     enabled: isEditing
   });
 
+  const { data: categories = [] } = useQuery({
+    queryKey: ['categories'],
+    queryFn: api.getCategories
+  });
+
   useEffect(() => {
     if (blog) {
       setFormData({
@@ -251,10 +256,9 @@ const BlogEditor = () => {
                       className="w-full bg-background border border-border rounded-lg px-3 py-2 text-sm outline-none"
                     >
                       <option value="">Uncategorized</option>
-                      <option value="Technology">Technology</option>
-                      <option value="Design">Design</option>
-                      <option value="Marketing">Marketing</option>
-                      <option value="Business">Business</option>
+                      {categories.map((cat: any) => (
+                        <option key={cat._id} value={cat.name}>{cat.name}</option>
+                      ))}
                     </select>
                   </div>
 
