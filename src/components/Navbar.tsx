@@ -28,9 +28,9 @@ const Navbar = () => {
             <Link 
               key={l.href} 
               to={l.href} 
-              className={`text-sm transition-colors ${
+              className={`text-sm font-medium transition-colors ${
                 isActive(l.href) 
-                  ? 'text-primary font-semibold' 
+                  ? 'text-primary' 
                   : 'text-muted-foreground hover:text-foreground'
               }`}
             >
@@ -62,9 +62,9 @@ const Navbar = () => {
                   key={l.href} 
                   to={l.href} 
                   onClick={() => setOpen(false)} 
-                  className={`transition-colors ${
+                  className={`block font-medium transition-colors ${
                     isActive(l.href)
-                      ? 'text-primary font-semibold'
+                      ? 'text-primary'
                       : 'text-muted-foreground hover:text-foreground'
                   }`}
                 >
