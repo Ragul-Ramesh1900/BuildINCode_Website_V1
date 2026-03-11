@@ -44,11 +44,11 @@ const ContactSection = () => {
             Transform Your Ideas Into <span className="text-gradient">Powerful Digital Products</span>
           </h2>
           <p className="text-muted-foreground max-w-2xl mx-auto text-lg">
-            Whether you need a startup MVP, enterprise platform, SaaS product, or mobile application, DevForge has the expertise to bring your vision to life. Our team works closely with clients to deliver high-quality software solutions that drive innovation and business growth.
+            Whether you need a startup MVP, enterprise platform, SaaS product, or mobile application, BuildINCode has the expertise to bring your vision to life. Our team works closely with clients to deliver high-quality software solutions that drive innovation and business growth.
           </p>
           <div className="mt-8 mb-4">
             <h3 className="text-2xl font-bold text-foreground">Start Your Digital Transformation Today</h3>
-            <p className="text-muted-foreground mt-2">Partner with DevForge to build scalable technology solutions for your business.</p>
+            <p className="text-muted-foreground mt-2">Partner with BuildINCode to build scalable technology solutions for your business.</p>
           </div>
         </motion.div>
 
@@ -113,9 +113,9 @@ const ContactSection = () => {
             <div className="p-6 rounded-xl bg-card border border-border shadow-card">
               <h3 className="font-semibold text-foreground mb-4">Get in Touch</h3>
               <div className="space-y-4">
-                <a href="mailto:hello@devforge.agency" className="flex items-center gap-3 text-muted-foreground hover:text-foreground transition-colors">
+                <a href="mailto:hello@buildincode.agency" className="flex items-center gap-3 text-muted-foreground hover:text-foreground transition-colors">
                   <Mail size={18} className="text-primary" />
-                  hello@devforge.agency
+                  hello@buildincode.agency
                 </a>
                 <a
                   href={`https://wa.me/1234567890?text=${encodeURIComponent("Hi, I'd like to discuss a project!")}`}

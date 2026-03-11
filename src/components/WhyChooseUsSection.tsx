@@ -25,7 +25,7 @@ const WhyChooseUsSection = () => {
         >
           <span className="text-primary text-sm font-semibold uppercase tracking-widest">Why Us</span>
           <h2 className="text-3xl md:text-5xl font-bold mt-3 mb-4">
-            Why Businesses <span className="text-gradient">Choose DevForge</span>
+            Why Businesses <span className="text-gradient">Choose BuildINCode</span>
           </h2>
         </motion.div>
 

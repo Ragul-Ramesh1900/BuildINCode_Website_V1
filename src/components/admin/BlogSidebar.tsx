@@ -30,9 +30,9 @@ const BlogSidebar = () => {
       <div className="p-6">
         <Link to="/" className="flex items-center gap-2 group">
           <div className="w-8 h-8 rounded-lg bg-primary flex items-center justify-center text-primary-foreground font-bold shadow-glow">
-            DF
+            BIC
           </div>
-          <span className="font-bold text-xl tracking-tight">DevForge <span className="text-primary italic">Blog</span></span>
+          <span className="font-bold text-xl tracking-tight">BuildINCode <span className="text-primary italic">Blog</span></span>
         </Link>
       </div>
 

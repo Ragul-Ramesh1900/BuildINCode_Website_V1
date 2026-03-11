@@ -61,7 +61,7 @@ const MediaLibrary = () => {
                </div>
                <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity flex flex-col items-center justify-center gap-3">
                   <div className="flex gap-2">
-                    <Button variant="secondary" size="icon" className="h-8 w-8" onClick={() => copyToClipboard(`https://devforge.com/media/img-${i}.jpg`)}>
+                    <Button variant="secondary" size="icon" className="h-8 w-8" onClick={() => copyToClipboard(`https://buildincode.com/media/img-${i}.jpg`)}>
                       <Copy size={14} />
                     </Button>
                     <Button variant="secondary" size="icon" className="h-8 w-8">

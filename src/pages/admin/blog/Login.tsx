@@ -33,7 +33,7 @@ const Login = () => {
     setTimeout(() => {
       setIsLoading(false);
       // HARDCODED FOR DEMO - in production this would verify against an API
-      if (formData.email === "admin@devforge.com" && formData.password === "admin123") {
+      if (formData.email === "admin@buildincode.com" && formData.password === "admin123") {
         authService.login("mock-jwt-token-xyz-123");
         toast.success("Welcome back, Master!");
         navigate("/blog/admin");
@@ -60,10 +60,10 @@ const Login = () => {
         <div className="text-center mb-10">
           <Link to="/" className="inline-flex items-center gap-2 mb-6 group">
             <div className="w-12 h-12 rounded-2xl bg-primary flex items-center justify-center text-primary-foreground font-bold text-2xl shadow-glow group-hover:scale-110 transition-transform duration-300">
-              DF
+              BIC
             </div>
             <span className="text-2xl font-bold tracking-tight text-white capitalize">
-              DevForge <span className="text-primary italic">Blog</span>
+              BuildINCode <span className="text-primary italic">Blog</span>
             </span>
           </Link>
           <h1 className="text-3xl font-extrabold text-white mb-2 tracking-tight">Admin Authentication</h1>
@@ -148,7 +148,7 @@ const Login = () => {
             </div>
           </div>
           <p className="text-[10px] text-muted-foreground/40 text-center max-w-[280px]">
-            This portal is restricted to authorized DevForge personnel only. Unauthorized access attempts are monitored and logged.
+            This portal is restricted to authorized BuildINCode personnel only. Unauthorized access attempts are monitored and logged.
           </p>
         </div>
       </motion.div>

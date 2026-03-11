@@ -20,9 +20,9 @@ import { toast } from "sonner";
 
 const Settings = () => {
   const [formData, setFormData] = useState({
-    siteName: "DevForge Blog",
+    siteName: "BuildINCode Blog",
     siteDescription: "Insights from the edge of technology and design.",
-    contactEmail: "admin@devforge.com",
+    contactEmail: "admin@buildincode.com",
     postsPerPage: 10,
     allowComments: true,
     socialLinks: {
@@ -158,7 +158,7 @@ const Settings = () => {
                 <Input 
                   id="social_twitter" 
                   name="social_twitter" 
-                  placeholder="https://twitter.com/devforge" 
+                  placeholder="https://twitter.com/buildincode" 
                   value={formData.socialLinks.twitter} 
                   onChange={handleInputChange}
                 />
@@ -168,7 +168,7 @@ const Settings = () => {
                 <Input 
                   id="social_linkedin" 
                   name="social_linkedin" 
-                  placeholder="https://linkedin.com/company/devforge" 
+                  placeholder="https://linkedin.com/company/buildincode" 
                   value={formData.socialLinks.linkedin} 
                   onChange={handleInputChange}
                 />

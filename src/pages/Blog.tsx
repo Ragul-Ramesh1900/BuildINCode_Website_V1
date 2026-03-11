@@ -47,7 +47,7 @@ const Blog = () => {
                       <img src={blog.featuredImage} alt={blog.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
                     ) : (
                       <div className="w-full h-full flex items-center justify-center text-muted-foreground/20">
-                         DF BLOG
+                         BIC BLOG
                       </div>
                     )}
                     <div className="absolute top-4 left-4">

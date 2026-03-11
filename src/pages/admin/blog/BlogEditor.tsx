@@ -179,7 +179,7 @@ const BlogEditor = () => {
                     <div className="space-y-2">
                       <Label htmlFor="slug">Custom URL Slug</Label>
                       <div className="flex items-center gap-2">
-                        <span className="text-muted-foreground text-sm font-medium">devforge.com/blog/</span>
+                        <span className="text-muted-foreground text-sm font-medium">buildincode.com/blog/</span>
                         <Input 
                           id="slug"
                           name="slug"

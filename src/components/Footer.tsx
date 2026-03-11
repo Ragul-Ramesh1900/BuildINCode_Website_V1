@@ -5,7 +5,7 @@ const Footer = () => (
     <div className="container mx-auto max-w-6xl">
       <div className="grid md:grid-cols-4 gap-8 mb-8">
         <div>
-          <div className="text-gradient font-bold text-lg mb-4">DevForge</div>
+          <div className="text-gradient font-bold text-lg mb-4">BuildINCode</div>
           <p className="text-sm text-muted-foreground">
             Building the future, one product at a time.
           </p>
@@ -40,7 +40,7 @@ const Footer = () => (
       
       <div className="pt-8 border-t border-border text-center">
         <p className="text-sm text-muted-foreground">
-          © {new Date().getFullYear()} DevForge. All rights reserved.
+          © {new Date().getFullYear()} BuildINCode. All rights reserved.
         </p>
       </div>
     </div>

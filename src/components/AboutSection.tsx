@@ -24,7 +24,7 @@ const AboutSection = () => {
               Your <span className="text-gradient">End-to-End</span> Technology Partner
             </h2>
             <p className="text-muted-foreground text-xl leading-relaxed mb-8 mt-6">
-              DevForge provides full-cycle software development services — from strategy and UI/UX design to development, deployment, and long-term maintenance.
+              BuildINCode provides full-cycle software development services — from strategy and UI/UX design to development, deployment, and long-term maintenance.
             </p>
             <p className="text-muted-foreground text-lg leading-relaxed mb-8">
               Our mission is simple: Build reliable, scalable, and high-performance digital solutions that help businesses succeed in the modern digital world.
