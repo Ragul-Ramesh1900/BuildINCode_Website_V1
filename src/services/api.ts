@@ -150,6 +150,27 @@ export const api = {
     return handleResponse(res);
   },
 
+  // Image Upload (Cloudinary)
+  uploadImage: async (file: File) => {
+    const formData = new FormData();
+    formData.append('image', file);
+    // Do NOT set Content-Type here — browser sets it automatically with boundary
+    const token = authService.getToken();
+    const res = await fetch(`${API_BASE_URL}/upload/image`, {
+      method: 'POST',
+      headers: token ? { Authorization: `Bearer ${token}` } : {},
+      body: formData,
+    });
+    return handleResponse(res);
+  },
+  deleteImage: async (publicId: string) => {
+    const res = await fetch(`${API_BASE_URL}/upload/image/${encodeURIComponent(publicId)}`, {
+      method: 'DELETE',
+      headers: authHeaders(),
+    });
+    return handleResponse(res);
+  },
+
   // Categories & Tags (public read, protected write)
   getCategories: async () => {
     const res = await fetch(`${API_BASE_URL}/categories`);

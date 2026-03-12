@@ -16,6 +16,7 @@ import blogRoutes from './routes/blogs.js';
 import categoryRoutes from './routes/categories.js';
 import tagRoutes from './routes/tags.js';
 import blogSettingsRoutes from './routes/blogSettings.js';
+import uploadRoutes from './routes/upload.js';
 
 dotenv.config();
 
@@ -48,6 +49,7 @@ app.use('/api/blogs', blogRoutes);
 app.use('/api/categories', categoryRoutes);
 app.use('/api/tags', tagRoutes);
 app.use('/api/blog', blogSettingsRoutes);
+app.use('/api/upload', uploadRoutes);
 
 app.get('/api/health', (req, res) => {
   res.json({ status: 'ok', message: 'Server is running', timestamp: new Date().toISOString() });
