@@ -10,7 +10,6 @@ import Portfolio from "./pages/Portfolio";
 import Products from "./pages/Products";
 import Testimonials from "./pages/Testimonials";
 import Contact from "./pages/Contact";
-import Admin from "./pages/Admin";
 import BlogDashboard from "./pages/admin/blog/Dashboard";
 import BlogList from "./pages/admin/blog/BlogList";
 import BlogEditor from "./pages/admin/blog/BlogEditor";
@@ -42,7 +41,6 @@ const App = () => (
           <Route path="/contact" element={<Contact />} />
           <Route path="/blog" element={<Blog />} />
           <Route path="/blog/:slug" element={<BlogPost />} />
-          <Route path="/admin" element={<Admin />} />
           <Route 
             path="/blog/admin" 
             element={<ProtectedRoute><BlogDashboard /></ProtectedRoute>} 
