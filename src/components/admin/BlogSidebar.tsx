@@ -6,6 +6,7 @@ import {
   Tag, 
   Image as ImageIcon, 
   Settings,
+  Users,
   ChevronRight,
   LogOut
 } from "lucide-react";
@@ -18,6 +19,7 @@ const menuItems = [
   { icon: FileText, label: "All Posts", path: "/blog/admin/posts" },
   { icon: Layers, label: "Categories", path: "/blog/admin/categories" },
   { icon: Tag, label: "Tags", path: "/blog/admin/categories" }, // Redirects to combined page
+  { icon: Users, label: "Users", path: "/blog/admin/users" },
   { icon: ImageIcon, label: "Media", path: "/blog/admin/media" },
   { icon: Settings, label: "Settings", path: "/blog/admin/settings" },
 ];
@@ -29,10 +31,7 @@ const BlogSidebar = () => {
     <aside className="w-64 bg-card border-r border-border flex flex-col h-screen sticky top-0">
       <div className="p-6">
         <Link to="/" className="flex items-center gap-2 group">
-          <div className="w-8 h-8 rounded-lg bg-primary flex items-center justify-center text-primary-foreground font-bold shadow-glow">
-            BIC
-          </div>
-          <span className="font-bold text-xl tracking-tight">BuildINCode <span className="text-primary italic">Blog</span></span>
+          <span className="font-bold text-xl tracking-tight">BuildINCode <span className="text-primary">Blog</span></span>
         </Link>
       </div>
 
@@ -62,8 +61,12 @@ const BlogSidebar = () => {
 
       <div className="p-4 border-t border-border relative">
         <div className="flex items-center gap-3 p-2 rounded-lg bg-secondary/50 mb-12">
-          <div className="w-8 h-8 rounded-full bg-primary/20 flex items-center justify-center text-primary font-bold text-xs">
-            {authService.getUser()?.name?.charAt(0)?.toUpperCase() || 'A'}
+          <div className="w-8 h-8 rounded-full bg-primary/20 flex items-center justify-center text-primary font-bold text-xs overflow-hidden">
+            {authService.getUser()?.avatar ? (
+              <img src={authService.getUser()?.avatar} alt={authService.getUser()?.name} className="w-full h-full object-cover" />
+            ) : (
+              authService.getUser()?.name?.charAt(0)?.toUpperCase() || 'A'
+            )}
           </div>
           <div className="flex-1 min-w-0">
             <p className="text-sm font-medium text-foreground truncate">{authService.getUser()?.name || 'Admin User'}</p>

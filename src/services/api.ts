@@ -260,6 +260,37 @@ export const api = {
     });
     return handleResponse(res);
   },
+  
+  // User Management (Admin Only)
+  getUsers: async () => {
+    const res = await fetch(`${API_BASE_URL}/auth/users`, {
+      headers: authHeaders(),
+    });
+    return handleResponse(res);
+  },
+  registerUser: async (data: any) => {
+    const res = await fetch(`${API_BASE_URL}/auth/register`, {
+      method: 'POST',
+      headers: authHeaders(),
+      body: JSON.stringify(data),
+    });
+    return handleResponse(res);
+  },
+  updateUser: async (id: string, data: any) => {
+    const res = await fetch(`${API_BASE_URL}/auth/users/${id}`, {
+      method: 'PUT',
+      headers: authHeaders(),
+      body: JSON.stringify(data),
+    });
+    return handleResponse(res);
+  },
+  deleteUser: async (id: string) => {
+    const res = await fetch(`${API_BASE_URL}/auth/users/${id}`, {
+      method: 'DELETE',
+      headers: authHeaders(),
+    });
+    return handleResponse(res);
+  },
 
   // Stats
   getBlogStats: async () => {

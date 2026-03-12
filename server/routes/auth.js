@@ -50,14 +50,14 @@ router.post('/login', async (req, res) => {
 // POST /api/auth/register (protected - only admins can create new users)
 router.post('/register', protect, async (req, res) => {
   try {
-    const { name, email, password, role } = req.body;
+    const { name, email, password, role, avatar } = req.body;
 
     const existingUser = await User.findOne({ email });
     if (existingUser) {
       return res.status(400).json({ message: 'User with this email already exists' });
     }
 
-    const user = new User({ name, email, password, role: role || 'editor' });
+    const user = new User({ name, email, password, role: role || 'editor', avatar: avatar || '' });
     await user.save();
 
     res.status(201).json({
@@ -91,6 +91,64 @@ router.post('/change-password', protect, async (req, res) => {
     res.json({ success: true, message: 'Password updated successfully' });
   } catch (error) {
     res.status(500).json({ message: 'Server error' });
+  }
+});
+
+// GET /api/auth/users (admin only)
+router.get('/users', protect, async (req, res) => {
+  try {
+    // Ideally check if req.user.role === 'admin'
+    const users = await User.find().select('-password');
+    res.json({ success: true, users });
+  } catch (error) {
+    res.status(500).json({ message: 'Server error fetching users' });
+  }
+});
+
+// PUT /api/auth/users/:id (admin only)
+router.put('/users/:id', protect, async (req, res) => {
+  try {
+    const { name, role, isActive, avatar } = req.body;
+    const user = await User.findById(req.params.id);
+    
+    if (!user) {
+      return res.status(404).json({ message: 'User not found' });
+    }
+
+    // Don't let a user deactivate themselves
+    if (req.user._id.toString() === req.params.id && isActive === false) {
+       return res.status(400).json({ message: 'You cannot deactivate your own account' });
+    }
+
+    user.name = name || user.name;
+    user.role = role || user.role;
+    if (isActive !== undefined) user.isActive = isActive;
+    if (avatar !== undefined) user.avatar = avatar;
+
+    await user.save();
+    res.json({ success: true, user: user.toJSON() });
+  } catch (error) {
+    res.status(500).json({ message: 'Server error updating user' });
+  }
+});
+
+// DELETE /api/auth/users/:id (admin only)
+router.delete('/users/:id', protect, async (req, res) => {
+  try {
+    // Don't let a user delete themselves
+    if (req.user._id.toString() === req.params.id) {
+       return res.status(400).json({ message: 'You cannot delete your own account' });
+    }
+
+    const user = await User.findById(req.params.id);
+    if (!user) {
+      return res.status(404).json({ message: 'User not found' });
+    }
+
+    await User.findByIdAndDelete(req.params.id);
+    res.json({ success: true, message: 'User deleted successfully' });
+  } catch (error) {
+    res.status(500).json({ message: 'Server error deleting user' });
   }
 });
 

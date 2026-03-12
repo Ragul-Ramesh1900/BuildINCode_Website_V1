@@ -58,11 +58,8 @@ const Login = () => {
       >
         <div className="text-center mb-10">
           <Link to="/" className="inline-flex items-center gap-2 mb-6 group">
-            <div className="w-12 h-12 rounded-2xl bg-primary flex items-center justify-center text-primary-foreground font-bold text-2xl shadow-glow group-hover:scale-110 transition-transform duration-300">
-              BIC
-            </div>
             <span className="text-2xl font-bold tracking-tight text-white capitalize">
-              BuildINCode <span className="text-primary italic">Blog</span>
+              BuildINCode <span className="text-primary">Blog</span>
             </span>
           </Link>
           <h1 className="text-3xl font-extrabold text-white mb-2 tracking-tight">Admin Authentication</h1>
