@@ -121,6 +121,7 @@ const Users = () => {
     mutationFn: ({ id, data }: { id: string, data: any }) => api.updateUser(id, data),
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['admin-users'] });
+      queryClient.invalidateQueries({ queryKey: ['me'] });
       toast.success("User updated successfully");
       setIsEditUserOpen(false);
     },

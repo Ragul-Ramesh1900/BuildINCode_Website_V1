@@ -25,11 +25,16 @@ const Dashboard = () => {
     queryFn: () => api.getBlogs({ limit: 5 })
   });
 
+  const { data: categories = [] } = useQuery({
+    queryKey: ['categories'],
+    queryFn: api.getCategories
+  });
+
   const statCards = [
     { title: "Total Blogs", value: stats?.total || 0, icon: FileText, color: "text-blue-500", bg: "bg-blue-500/10" },
     { title: "Published", value: stats?.published || 0, icon: CheckCircle, color: "text-green-500", bg: "bg-green-500/10" },
-    { title: "Drafts", value: stats?.drafts || 0, icon: Clock, color: "text-orange-500", bg: "bg-orange-500/10" },
-    { title: "Avg. Views", value: stats?.avgViews || "1.2k", icon: Eye, color: "text-purple-500", bg: "bg-purple-500/10" },
+    { title: "Drafts", value: stats?.drafts ?? 0, icon: Clock, color: "text-orange-500", bg: "bg-orange-500/10" },
+    { title: "Avg. Views", value: stats?.avgViews ?? 0, icon: Eye, color: "text-purple-500", bg: "bg-purple-500/10" },
   ];
 
   return (
@@ -57,12 +62,6 @@ const Dashboard = () => {
             </CardHeader>
             <CardContent>
               <div className="text-3xl font-bold">{stat.value}</div>
-              <p className="text-xs text-muted-foreground flex items-center gap-1 mt-1">
-                <span className="text-green-500 flex items-center font-medium">
-                  <ArrowUpRight size={12} /> +12%
-                </span>
-                from last month
-              </p>
             </CardContent>
           </Card>
         ))}
@@ -123,15 +122,19 @@ const Dashboard = () => {
           </CardHeader>
           <CardContent>
             <div className="space-y-4">
-              {["Technology", "Design", "Marketing", "Business"].map((cat) => (
-                <div key={cat} className="flex items-center justify-between group">
+              {categories.length > 0 ? categories.slice(0, 4).map((cat: any) => (
+                <div key={cat._id} className="flex items-center justify-between group">
                   <div className="flex items-center gap-3">
                     <div className="w-2 h-2 rounded-full bg-primary" />
-                    <span className="text-sm font-medium group-hover:text-primary transition-colors">{cat}</span>
+                    <span className="text-sm font-medium group-hover:text-primary transition-colors">{cat.name}</span>
                   </div>
-                  <span className="text-xs text-muted-foreground bg-secondary px-2 py-1 rounded">12 posts</span>
+                  <span className="text-xs text-muted-foreground bg-secondary px-2 py-1 rounded">{cat.count || 0} posts</span>
                 </div>
-              ))}
+              )) : (
+                <div className="text-center py-4">
+                  <p className="text-muted-foreground italic text-sm">No categories yet.</p>
+                </div>
+              )}
             </div>
             <Button className="w-full mt-6" variant="secondary" size="sm" asChild>
               <Link to="/blog/admin/categories">Manage Categories</Link>
