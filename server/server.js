@@ -49,8 +49,8 @@ app.use(cors({
 app.use(express.json({ limit: '10mb' }));
 app.use(express.urlencoded({ extended: true }));
 
-// Connect to MongoDB
-connectDB();
+// Connect to MongoDB handled in api/index.js for serverless or start script for local
+// connectDB();
 
 // Create a router for all API endpoints
 const apiRouter = express.Router();
@@ -83,9 +83,11 @@ app.get('/api/health', (req, res) => {
 });
 
 if (!process.env.VERCEL) {
-  app.listen(PORT, () => {
-    console.log(`🚀 Server running on port ${PORT}`);
-    console.log(`📝 Blog Admin API: http://localhost:${PORT}/api`);
+  connectDB().then(() => {
+    app.listen(PORT, () => {
+      console.log(`🚀 Server running on port ${PORT}`);
+      console.log(`📝 Blog Admin API: http://localhost:${PORT}/api`);
+    });
   });
 }
 
