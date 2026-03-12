@@ -36,26 +36,37 @@ app.use(express.urlencoded({ extended: true }));
 // Connect to MongoDB
 connectDB();
 
+// Create a router for all API endpoints
+const apiRouter = express.Router();
+
 // Existing routes
-app.use('/api/hero', heroRoutes);
-app.use('/api/projects', projectRoutes);
-app.use('/api/services', serviceRoutes);
-app.use('/api/testimonials', testimonialRoutes);
-app.use('/api/contact', contactRoutes);
+apiRouter.use('/hero', heroRoutes);
+apiRouter.use('/projects', projectRoutes);
+apiRouter.use('/services', serviceRoutes);
+apiRouter.use('/testimonials', testimonialRoutes);
+apiRouter.use('/contact', contactRoutes);
 
 // Blog system routes
-app.use('/api/auth', authRoutes);
-app.use('/api/blogs', blogRoutes);
-app.use('/api/categories', categoryRoutes);
-app.use('/api/tags', tagRoutes);
-app.use('/api/blog', blogSettingsRoutes);
-app.use('/api/upload', uploadRoutes);
+apiRouter.use('/auth', authRoutes);
+apiRouter.use('/blogs', blogRoutes);
+apiRouter.use('/categories', categoryRoutes);
+apiRouter.use('/tags', tagRoutes);
+apiRouter.use('/blog', blogSettingsRoutes);
+apiRouter.use('/upload', uploadRoutes);
+
+apiRouter.get('/health', (req, res) => {
+  res.json({ status: 'ok', message: 'API is running', timestamp: new Date().toISOString() });
+});
+
+// Mount the router on both /api (local dev) and / (Vercel serverless strip fallback)
+app.use('/api', apiRouter);
+app.use('/', apiRouter);
 
 app.get('/api/health', (req, res) => {
   res.json({ status: 'ok', message: 'Server is running', timestamp: new Date().toISOString() });
 });
 
-if (process.env.NODE_ENV !== 'production' || process.env.RUN_LOCAL === 'true') {
+if (!process.env.VERCEL) {
   app.listen(PORT, () => {
     console.log(`🚀 Server running on port ${PORT}`);
     console.log(`📝 Blog Admin API: http://localhost:${PORT}/api`);
