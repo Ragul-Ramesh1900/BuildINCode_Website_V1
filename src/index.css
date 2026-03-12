@@ -110,3 +110,11 @@
 html {
   scroll-behavior: smooth;
 }
+
+/* Prevent layout jump when dialogs (from Radix UI / shadcn) are opened */
+body[data-scroll-locked] {
+  padding-right: 0 !important;
+  margin-right: 0 !important;
+  pointer-events: auto !important;
+  overflow: auto !important;
+}

@@ -15,7 +15,7 @@ const HeroSection = () => {
       badge: "Building Scalable Digital Solutions for Modern Businesses",
       title: "Building Scalable Digital Solutions for",
       highlightedText: "Modern Businesses",
-      description: "At DevForge, we help businesses transform ideas into powerful digital products. Our team of experienced developers, designers, and technology experts delivers scalable IT solutions that drive growth, improve efficiency, and create exceptional digital experiences. From web applications and mobile apps to cloud platforms and enterprise systems, we build technology that grows with your business.",
+      description: "At BuildINCode, we help businesses transform ideas into powerful digital products. Our team of experienced developers, designers, and technology experts delivers scalable IT solutions that drive growth, improve efficiency, and create exceptional digital experiences. From web applications and mobile apps to cloud platforms and enterprise systems, we build technology that grows with your business.",
       stats: [
         { number: "50+", label: "Projects Delivered" },
         { number: "6", label: "Team Members" },

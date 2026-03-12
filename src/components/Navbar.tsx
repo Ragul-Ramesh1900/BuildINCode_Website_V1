@@ -4,7 +4,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Link, useLocation } from "react-router-dom";
 
 const navLinks = [
-  { label: "Home", href: "/" },
+  { label: "Products", href: "/products" },
   { label: "Services", href: "/services" },
   { label: "Portfolio", href: "/portfolio" },
   { label: "About", href: "/about" },
@@ -20,7 +20,7 @@ const Navbar = () => {
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 glass">
       <div className="container mx-auto flex items-center justify-between h-16 px-4">
-        <Link to="/" className="text-xl font-bold text-gradient">DevForge</Link>
+        <Link to="/" className="text-xl font-bold text-gradient">BuildINCode</Link>
         
         {/* Desktop */}
         <div className="hidden md:flex items-center gap-8">
@@ -28,9 +28,9 @@ const Navbar = () => {
             <Link 
               key={l.href} 
               to={l.href} 
-              className={`text-sm transition-colors ${
+              className={`text-sm font-medium transition-colors ${
                 isActive(l.href) 
-                  ? 'text-primary font-semibold' 
+                  ? 'text-primary' 
                   : 'text-muted-foreground hover:text-foreground'
               }`}
             >
@@ -62,9 +62,9 @@ const Navbar = () => {
                   key={l.href} 
                   to={l.href} 
                   onClick={() => setOpen(false)} 
-                  className={`transition-colors ${
+                  className={`block font-medium transition-colors ${
                     isActive(l.href)
-                      ? 'text-primary font-semibold'
+                      ? 'text-primary'
                       : 'text-muted-foreground hover:text-foreground'
                   }`}
                 >

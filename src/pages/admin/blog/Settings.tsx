@@ -17,12 +17,23 @@ import {
   Palette
 } from "lucide-react";
 import { toast } from "sonner";
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+} from "@/components/ui/alert-dialog";
 
 const Settings = () => {
+  const [resetDialog, setResetDialog] = useState(false);
   const [formData, setFormData] = useState({
-    siteName: "DevForge Blog",
+    siteName: "BuildINCode Blog",
     siteDescription: "Insights from the edge of technology and design.",
-    contactEmail: "admin@devforge.com",
+    contactEmail: "admin@buildincode.com",
     postsPerPage: 10,
     allowComments: true,
     socialLinks: {
@@ -158,7 +169,7 @@ const Settings = () => {
                 <Input 
                   id="social_twitter" 
                   name="social_twitter" 
-                  placeholder="https://twitter.com/devforge" 
+                  placeholder="https://twitter.com/buildincode" 
                   value={formData.socialLinks.twitter} 
                   onChange={handleInputChange}
                 />
@@ -168,7 +179,7 @@ const Settings = () => {
                 <Input 
                   id="social_linkedin" 
                   name="social_linkedin" 
-                  placeholder="https://linkedin.com/company/devforge" 
+                  placeholder="https://linkedin.com/company/buildincode" 
                   value={formData.socialLinks.linkedin} 
                   onChange={handleInputChange}
                 />
@@ -184,13 +195,39 @@ const Settings = () => {
               <CardDescription>Irreversible actions for your blog data.</CardDescription>
             </CardHeader>
             <CardContent>
-              <Button variant="destructive" type="button" onClick={() => confirm("Reset all settings to default?")}>
+              <Button variant="destructive" type="button" onClick={() => setResetDialog(true)}>
                 Reset to Default
               </Button>
             </CardContent>
           </Card>
         </div>
       </form>
+
+      {/* Reset Confirmation Dialog */}
+      <AlertDialog open={resetDialog} onOpenChange={setResetDialog}>
+        <AlertDialogContent>
+          <AlertDialogHeader>
+            <AlertDialogTitle>Reset Settings</AlertDialogTitle>
+            <AlertDialogDescription>
+              Are you sure you want to reset all settings to their defaults? Your current configuration will be lost.
+            </AlertDialogDescription>
+          </AlertDialogHeader>
+          <AlertDialogFooter>
+            <AlertDialogCancel>Cancel</AlertDialogCancel>
+            <AlertDialogAction 
+              onClick={() => {
+                // Here you would implement your reset logic
+                toast.success("Settings reset to defaults");
+                setResetDialog(false);
+              }}
+              className="bg-destructive hover:bg-destructive/90"
+            >
+              Reset Settings
+            </AlertDialogAction>
+          </AlertDialogFooter>
+        </AlertDialogContent>
+      </AlertDialog>
+
     </BlogLayout>
   );
 };
