@@ -133,7 +133,9 @@ const Dashboard = () => {
                 </div>
               ))}
             </div>
-            <Button className="w-full mt-6" variant="secondary" size="sm">Manage Categories</Button>
+            <Button className="w-full mt-6" variant="secondary" size="sm" asChild>
+              <Link to="/blog/admin/categories">Manage Categories</Link>
+            </Button>
           </CardContent>
         </Card>
       </div>

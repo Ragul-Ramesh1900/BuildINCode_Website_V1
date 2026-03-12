@@ -15,8 +15,6 @@ const BlogLayout = ({ children, title }: BlogLayoutProps) => {
         <header className="h-16 border-b border-border bg-card/50 backdrop-blur-md flex items-center justify-between px-8 sticky top-0 z-40">
           <h1 className="text-xl font-bold">{title}</h1>
           <div className="flex items-center gap-4">
-            <button className="text-sm text-muted-foreground hover:text-foreground transition-colors">Documentation</button>
-            <div className="w-px h-4 bg-border" />
             <button className="text-sm font-medium text-primary hover:underline">View Site</button>
           </div>
         </header>

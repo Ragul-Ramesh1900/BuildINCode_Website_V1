@@ -14,11 +14,23 @@ import {
   Search
 } from "lucide-react";
 import { toast } from "sonner";
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+} from "@/components/ui/alert-dialog";
 
 const CategoriesTags = () => {
   const queryClient = useQueryClient();
   const [newCategory, setNewCategory] = useState("");
   const [newTag, setNewTag] = useState("");
+  const [deleteCategoryDialog, setDeleteCategoryDialog] = useState<{isOpen: boolean, id: string, name: string}>({ isOpen: false, id: '', name: '' });
+  const [deleteTagDialog, setDeleteTagDialog] = useState<{isOpen: boolean, id: string, name: string}>({ isOpen: false, id: '', name: '' });
 
   const { data: categories = [] } = useQuery({
     queryKey: ['categories'],
@@ -110,7 +122,7 @@ const CategoriesTags = () => {
                         variant="ghost" 
                         size="icon" 
                         className="h-8 w-8 text-muted-foreground hover:text-destructive"
-                        onClick={() => confirm(`Delete category "${cat.name}"?`) && deleteCategory.mutate(cat._id)}
+                        onClick={() => setDeleteCategoryDialog({ isOpen: true, id: cat._id, name: cat.name })}
                       >
                         <Trash2 size={14} />
                       </Button>
@@ -160,7 +172,7 @@ const CategoriesTags = () => {
                     <span className="font-medium">{tag.name}</span>
                     <button 
                       className="text-muted-foreground hover:text-destructive opacity-0 group-hover:opacity-100 transition-opacity"
-                      onClick={() => confirm(`Delete tag "${tag.name}"?`) && deleteTag.mutate(tag._id)}
+                      onClick={() => setDeleteTagDialog({ isOpen: true, id: tag._id, name: tag.name })}
                     >
                       <Trash2 size={12} />
                     </button>
@@ -174,6 +186,48 @@ const CategoriesTags = () => {
           </Card>
         </div>
       </div>
+
+      {/* Delete Category Dialog */}
+      <AlertDialog open={deleteCategoryDialog.isOpen} onOpenChange={(isOpen) => setDeleteCategoryDialog(prev => ({ ...prev, isOpen }))}>
+        <AlertDialogContent>
+          <AlertDialogHeader>
+            <AlertDialogTitle>Delete Category</AlertDialogTitle>
+            <AlertDialogDescription>
+              Are you sure you want to delete the category "{deleteCategoryDialog.name}"?
+            </AlertDialogDescription>
+          </AlertDialogHeader>
+          <AlertDialogFooter>
+            <AlertDialogCancel>Cancel</AlertDialogCancel>
+            <AlertDialogAction 
+              onClick={() => deleteCategory.mutate(deleteCategoryDialog.id)}
+              className="bg-destructive hover:bg-destructive/90"
+            >
+              Delete Category
+            </AlertDialogAction>
+          </AlertDialogFooter>
+        </AlertDialogContent>
+      </AlertDialog>
+
+      {/* Delete Tag Dialog */}
+      <AlertDialog open={deleteTagDialog.isOpen} onOpenChange={(isOpen) => setDeleteTagDialog(prev => ({ ...prev, isOpen }))}>
+        <AlertDialogContent>
+          <AlertDialogHeader>
+            <AlertDialogTitle>Delete Tag</AlertDialogTitle>
+            <AlertDialogDescription>
+              Are you sure you want to delete the tag "{deleteTagDialog.name}"?
+            </AlertDialogDescription>
+          </AlertDialogHeader>
+          <AlertDialogFooter>
+            <AlertDialogCancel>Cancel</AlertDialogCancel>
+            <AlertDialogAction 
+              onClick={() => deleteTag.mutate(deleteTagDialog.id)}
+              className="bg-destructive hover:bg-destructive/90"
+            >
+              Delete Tag
+            </AlertDialogAction>
+          </AlertDialogFooter>
+        </AlertDialogContent>
+      </AlertDialog>
     </BlogLayout>
   );
 };

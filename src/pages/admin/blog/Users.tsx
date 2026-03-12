@@ -16,6 +16,16 @@ import {
   DialogHeader,
   DialogTitle,
 } from "@/components/ui/dialog";
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+} from "@/components/ui/alert-dialog";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { 
   Users as UsersIcon,
@@ -58,6 +68,7 @@ const Users = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [isAddUserOpen, setIsAddUserOpen] = useState(false);
   const [isEditUserOpen, setIsEditUserOpen] = useState(false);
+  const [deleteDialog, setDeleteDialog] = useState<{ isOpen: boolean, id: string, name: string }>({ isOpen: false, id: '', name: '' });
   const [selectedUser, setSelectedUser] = useState<User | null>(null);
 
   const [isUploadingAvatar, setIsUploadingAvatar] = useState(false);
@@ -158,9 +169,7 @@ const Users = () => {
       toast.error("You cannot delete yourself!");
       return;
     }
-    if (confirm(`Are you sure you want to permanently delete user "${name}"?`)) {
-      deleteUserMutation.mutate(id);
-    }
+    setDeleteDialog({ isOpen: true, id, name });
   };
 
   const generatePassword = () => {
@@ -527,6 +536,27 @@ const Users = () => {
           </form>
         </DialogContent>
       </Dialog>
+
+      {/* DELETE DIALOG */}
+      <AlertDialog open={deleteDialog.isOpen} onOpenChange={(isOpen) => setDeleteDialog(prev => ({ ...prev, isOpen }))}>
+        <AlertDialogContent>
+          <AlertDialogHeader>
+            <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
+            <AlertDialogDescription>
+              This action cannot be undone. This will permanently delete user "{deleteDialog.name}" from our servers.
+            </AlertDialogDescription>
+          </AlertDialogHeader>
+          <AlertDialogFooter>
+            <AlertDialogCancel>Cancel</AlertDialogCancel>
+            <AlertDialogAction 
+              onClick={() => deleteUserMutation.mutate(deleteDialog.id)} 
+              className="bg-destructive hover:bg-destructive/90 text-destructive-foreground focus:ring-destructive"
+            >
+              Delete User
+            </AlertDialogAction>
+          </AlertDialogFooter>
+        </AlertDialogContent>
+      </AlertDialog>
 
     </BlogLayout>
   );

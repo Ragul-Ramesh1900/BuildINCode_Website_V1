@@ -29,11 +29,22 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+} from "@/components/ui/alert-dialog";
 
 const BlogList = () => {
   const queryClient = useQueryClient();
   const [search, setSearch] = useState("");
   const [statusFilter, setStatusFilter] = useState("all");
+  const [deleteDialog, setDeleteDialog] = useState<{ isOpen: boolean, id: string }>({ isOpen: false, id: '' });
 
   const { data: blogs = [], isLoading } = useQuery({
     queryKey: ['blogs', search, statusFilter],
@@ -153,13 +164,9 @@ const BlogList = () => {
                           </DropdownMenuItem>
                           <DropdownMenuItem 
                             className="text-destructive focus:text-destructive"
-                            onClick={() => {
-                              if(confirm("Are you sure you want to delete this post?")) {
-                                deleteBlog.mutate(blog._id);
-                              }
-                            }}
+                            onClick={() => setDeleteDialog({ isOpen: true, id: blog._id })}
                           >
-                            <Trash2 size={14} /> Delete
+                            <Trash2 size={14} className="mr-2" /> Delete
                           </DropdownMenuItem>
                         </DropdownMenuContent>
                       </DropdownMenu>
@@ -177,6 +184,31 @@ const BlogList = () => {
           </TableBody>
         </Table>
       </div>
+
+      {/* DELETE DIALOG */}
+      <AlertDialog open={deleteDialog.isOpen} onOpenChange={(isOpen) => setDeleteDialog(prev => ({ ...prev, isOpen }))}>
+        <AlertDialogContent>
+          <AlertDialogHeader>
+            <AlertDialogTitle>Delete Blog Post</AlertDialogTitle>
+            <AlertDialogDescription>
+              Are you sure you want to delete this post? This action cannot be undone.
+            </AlertDialogDescription>
+          </AlertDialogHeader>
+          <AlertDialogFooter>
+            <AlertDialogCancel>Cancel</AlertDialogCancel>
+            <AlertDialogAction 
+              onClick={() => {
+                deleteBlog.mutate(deleteDialog.id);
+                setDeleteDialog({ isOpen: false, id: '' });
+              }} 
+              className="bg-destructive hover:bg-destructive/90 text-destructive-foreground"
+            >
+              Delete Post
+            </AlertDialogAction>
+          </AlertDialogFooter>
+        </AlertDialogContent>
+      </AlertDialog>
+
     </BlogLayout>
   );
 };

@@ -2,6 +2,7 @@ import { useState, useEffect, useRef, useCallback } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import { api } from "@/services/api";
+import { authService } from "@/services/auth";
 import BlogLayout from "@/components/admin/BlogLayout";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -177,7 +178,24 @@ const BlogEditor = () => {
             </Link>
           </Button>
           <div className="flex items-center gap-3">
-            <Button variant="outline" type="button" className="flex items-center gap-2">
+            <Button 
+              variant="outline" 
+              type="button" 
+              className="flex items-center gap-2"
+              onClick={() => {
+                if (!formData.title) {
+                  toast.error("Please add a title before previewing.");
+                  return;
+                }
+                const previewData = {
+                  ...formData,
+                  author: authService.getUser()?.name || "Admin",
+                  createdAt: new Date().toISOString()
+                };
+                localStorage.setItem("blog_preview", JSON.stringify(previewData));
+                window.open(`/blog/preview`, '_blank');
+              }}
+            >
               <Eye size={18} /> Preview
             </Button>
             <Button type="submit" className="shadow-glow flex items-center gap-2" disabled={saveMutation.isPending}>

@@ -13,6 +13,17 @@ import {
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { authService } from "@/services/auth";
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+  AlertDialogTrigger,
+} from "@/components/ui/alert-dialog";
 
 const menuItems = [
   { icon: LayoutDashboard, label: "Dashboard", path: "/blog/admin" },
@@ -75,19 +86,32 @@ const BlogSidebar = () => {
         </div>
         
         <div className="absolute bottom-4 left-0 w-full px-4">
-          <Button 
-            variant="ghost" 
-            className="w-full justify-start text-destructive hover:bg-destructive/10 hover:text-destructive group"
-            onClick={() => {
-               if(confirm("Sign out of admin session?")) {
+          <AlertDialog>
+            <AlertDialogTrigger asChild>
+              <Button 
+                variant="ghost" 
+                className="w-full justify-start text-destructive hover:bg-destructive/10 hover:text-destructive group"
+              >
+                <LogOut className="mr-3 group-hover:rotate-12 transition-transform" size={18} />
+                Logout
+              </Button>
+            </AlertDialogTrigger>
+            <AlertDialogContent>
+              <AlertDialogHeader>
+                <AlertDialogTitle>Sign out</AlertDialogTitle>
+                <AlertDialogDescription>
+                  Are you sure you want to sign out of your admin session?
+                </AlertDialogDescription>
+              </AlertDialogHeader>
+              <AlertDialogFooter>
+                <AlertDialogCancel>Cancel</AlertDialogCancel>
+                <AlertDialogAction onClick={() => {
                   authService.logout();
                   window.location.href = "/blog/admin/login";
-               }
-            }}
-          >
-            <LogOut className="mr-3 group-hover:rotate-12 transition-transform" size={18} />
-            Logout
-          </Button>
+                }}>Continue</AlertDialogAction>
+              </AlertDialogFooter>
+            </AlertDialogContent>
+          </AlertDialog>
         </div>
       </div>
     </aside>

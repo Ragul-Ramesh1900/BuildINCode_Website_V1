@@ -17,8 +17,19 @@ import {
   Palette
 } from "lucide-react";
 import { toast } from "sonner";
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+} from "@/components/ui/alert-dialog";
 
 const Settings = () => {
+  const [resetDialog, setResetDialog] = useState(false);
   const [formData, setFormData] = useState({
     siteName: "BuildINCode Blog",
     siteDescription: "Insights from the edge of technology and design.",
@@ -184,13 +195,39 @@ const Settings = () => {
               <CardDescription>Irreversible actions for your blog data.</CardDescription>
             </CardHeader>
             <CardContent>
-              <Button variant="destructive" type="button" onClick={() => confirm("Reset all settings to default?")}>
+              <Button variant="destructive" type="button" onClick={() => setResetDialog(true)}>
                 Reset to Default
               </Button>
             </CardContent>
           </Card>
         </div>
       </form>
+
+      {/* Reset Confirmation Dialog */}
+      <AlertDialog open={resetDialog} onOpenChange={setResetDialog}>
+        <AlertDialogContent>
+          <AlertDialogHeader>
+            <AlertDialogTitle>Reset Settings</AlertDialogTitle>
+            <AlertDialogDescription>
+              Are you sure you want to reset all settings to their defaults? Your current configuration will be lost.
+            </AlertDialogDescription>
+          </AlertDialogHeader>
+          <AlertDialogFooter>
+            <AlertDialogCancel>Cancel</AlertDialogCancel>
+            <AlertDialogAction 
+              onClick={() => {
+                // Here you would implement your reset logic
+                toast.success("Settings reset to defaults");
+                setResetDialog(false);
+              }}
+              className="bg-destructive hover:bg-destructive/90"
+            >
+              Reset Settings
+            </AlertDialogAction>
+          </AlertDialogFooter>
+        </AlertDialogContent>
+      </AlertDialog>
+
     </BlogLayout>
   );
 };

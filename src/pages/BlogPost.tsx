@@ -54,7 +54,13 @@ const BlogPost = () => {
 
   const { data: blog, isLoading } = useQuery({
     queryKey: ['blog-post', slug],
-    queryFn: () => api.getBlogBySlug(slug!),
+    queryFn: async () => {
+      if (slug === 'preview') {
+        const previewData = localStorage.getItem('blog_preview');
+        return previewData ? JSON.parse(previewData) : null;
+      }
+      return api.getBlogBySlug(slug!);
+    },
     enabled: !!slug
   });
 
