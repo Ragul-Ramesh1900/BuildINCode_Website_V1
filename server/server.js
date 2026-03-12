@@ -55,7 +55,11 @@ app.get('/api/health', (req, res) => {
   res.json({ status: 'ok', message: 'Server is running', timestamp: new Date().toISOString() });
 });
 
-app.listen(PORT, () => {
-  console.log(`🚀 Server running on port ${PORT}`);
-  console.log(`📝 Blog Admin API: http://localhost:${PORT}/api`);
-});
+if (process.env.NODE_ENV !== 'production' || process.env.RUN_LOCAL === 'true') {
+  app.listen(PORT, () => {
+    console.log(`🚀 Server running on port ${PORT}`);
+    console.log(`📝 Blog Admin API: http://localhost:${PORT}/api`);
+  });
+}
+
+export default app;
